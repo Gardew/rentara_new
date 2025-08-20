@@ -1,0 +1,338 @@
+{
+	"navbar": {
+		"appName": "Rentara",
+		"menu": "Menu",
+		"personal": "Personal",
+		"home": "Home",
+		"properties": "Properties",
+		"rentals": "Rentals",
+		"financials": "Financials",
+		"tenants": "Tenants",
+		"maintenance": "Maintenance",
+		"messages": "Messages",
+		"calendar": "Calendar"
+	},
+	"header": {
+		"profile": "Profile",
+		"settings": "Settings",
+		"logout": "Logout"
+	},
+	"auth": {
+		"welcomeBack": "Welcome Back!",
+		"welcome": "Welcome!",
+		"signUpPrompt": "Please enter your details to sign up.",
+		"email": "E-Mail",
+		"emailPlaceholder": "john@doe.com",
+		"password": "Password",
+		"firstName": "First Name",
+		"lastName": "Family Name",
+		"login": "Login",
+		"signup": "Sign Up",
+		"useDemo": "Use Demo Account",
+		"noAccount": "Don't have an account? Sign up",
+		"haveAccount": "Already have an account? Log in",
+		"errors": {
+			"email": "Please enter a valid email address",
+			"passwordMin": "Password must be at least 8 characters long",
+			"passwordComplexity": "Please use at least one uppercase, one lowercase letter and one number",
+			"firstName": "Please enter your first name",
+			"lastName": "Please enter your last name",
+			"enterEmail": "Enter your email address",
+			"enterPassword": "Enter your password"
+		}
+	},
+	"notFound": {
+		"title": "Page Not Found",
+		"desc": "Sorry, the page you are looking for does not exist.",
+		"goHome": "Go Home"
+	},
+	"home": {
+		"welcome": "Welcome, {{name}}!",
+		"tagline": "Track, manage and grow your real estate business.",
+		"totalProperties": "Total Properties",
+		"totalUnits": "Total Units",
+		"totalTenants": "Total Tenants",
+		"payments": "Payments",
+		"quickActions": "Quick Actions",
+		"createProperty": "Create new Property",
+		"createPropertyDesc": "Add a new property including units",
+		"createTenant": "Create new Tenant",
+		"createTenantDesc": "Add a new tenant to a unit",
+		"yourProperties": "Your Properties",
+		"notifications": "Your Notifications",
+		"noNotifications": "You have no new notifications",
+		"viewAll": "View All",
+		"upcomingEvents": "Upcoming Events",
+		"newestTenants": "Newest Tenants",
+		"createdOn": "Created on {{date}}"
+	},
+	"tenants": {
+		"desc": "The table below shows all your tenants. To view a tenant's profile page, click on their profile picture.",
+		"addButton": "Add Tenant"
+	},
+	"rentals": {
+		"title": "Rental Units",
+		"desc": "These are your rental properties, so the units of each property are displayed here. You can filter the units by property using the dropdown above."
+	},
+	"properties": {
+		"title": "Properties",
+		"desc": "These are your properties, for more information such as the units of each property, click on the property.",
+		"view": {
+			"detailed": "Detailed",
+			"compact": "Compact"
+		},
+		"addButton": "Add Property"
+	},
+	"maintenance": {
+		"title": "Maintenance",
+		"desc": "This is where you can view and add maintenance reports.",
+		"reportButton": "Report Maintenance"
+	},
+	"financials": {
+		"title": "Financials",
+		"desc": "This page offers an overview of the financials for either a single property or all properties, depending on your selection.",
+		"cards": {
+			"rentDue": "Rent Due",
+			"rentPaid": "Rent Paid",
+			"activeLeases": "Active Leases"
+		},
+		"tabs": {
+			"payments": "Payments",
+			"rentSchedule": "Rent Schedule",
+			"leases": "Leases",
+			"expenses": "Expenses"
+		},
+		"addPayment": "Add Payment"
+	},
+	"messages": {
+		"title": "Messages",
+		"you": "You",
+		"placeholder": "Message",
+		"sendImage": "Send Image",
+		"imageUrl": "Image URL",
+		"imageUrlDesc": "Enter the URL of the image you want to send"
+	},
+	"calendar": {
+		"title": "Your Calendar",
+		"week": "Week",
+		"upcoming": "Upcoming",
+		"upcomingLead": "Your next three events are:",
+		"categories": "Categories",
+		"maintenance": "Maintenance",
+		"lease": "Lease",
+		"rent": "Rent",
+		"other": "Other",
+		"eventsInWeek": "Events in Selected Week",
+		"noEvents": "No Events."
+	},
+	"explorer": {
+		"title": "Explorer",
+		"unitDetails": "Unit Details",
+		"unit": "Unit",
+		"floor": "Floor",
+		"rooms": "Rooms",
+		"na": "N/A"
+	},
+	"account": {
+		"profile": "Profile",
+		"settings": "Settings"
+	},
+	"tenantProfile": {
+		"alert": {
+			"title": "Tenant Not Assigned To Unit",
+			"desc": "This tenant has not been assigned to a unit and some features may not be available. If you wish to assign this tenant to a unit, you can do so on the rental unit page."
+		},
+		"noUnit": "No Unit",
+		"addedOn": "Added: {{date}}",
+		"invite": {
+			"desc": "This tenant has not created an account yet.",
+			"cta": "Send Invite"
+		},
+		"buttons": {
+			"message": "Message"
+		},
+		"tabs": {
+			"information": "Information",
+			"leaseHistory": "Lease History",
+			"maintenanceRequests": "Maintenance Requests"
+		}
+	},
+	"propertyDetail": {
+		"deleteButton": "Delete Property",
+		"dbTableIntro": "The table below shows the data of the property from the database.",
+		"tableCaption": "Property Data from DB",
+		"columns": {
+			"title": "Title",
+			"value": "Value"
+		},
+		"fields": {
+			"id": "ID",
+			"title": "Title",
+			"description": "Description",
+			"realEstateType": "Real Estate Type",
+			"marketPrice": "Market Price",
+			"lotSize": "Lot Size",
+			"yearBuilt": "Year Built",
+			"units": "Units"
+		},
+		"unitLabel": "UNIT {{id}}"
+	},
+	"rentalDetail": {
+		"fallbackTitle": "Unit Details",
+		"intro": "View and manage details of this rental unit",
+		"tabs": {
+			"details": "Details",
+			"leases": "Leases",
+			"maintenance": "Maintenance",
+			"expenses": "Expenses"
+		},
+		"labels": {
+			"bedroom": "Bedroom",
+			"bathroom": "Bathroom",
+			"unitSize": "Unit Size",
+			"garages": "Garages"
+		},
+		"na": "N/A",
+		"leasesSubtitle": "This is the lease history for unit {{unit}}",
+		"addLease": "Add Lease",
+		"maintenanceSubtitle": "This is the maintenance history for this unit.",
+		"expensesSubtitle": "These are the expenses connected to this unit."
+	},
+	"propertyCreation": {
+		"title": "Create Property",
+		"sections": {
+			"unitType": "Unit Type",
+			"information": "Property Information",
+			"units": "Unit Information",
+			"confirmation": "Confirmation"
+		},
+		"steps": {
+			"information": "Property Information",
+			"units": "Unit Information",
+			"confirmation": "Confirmation"
+		},
+		"fields": {
+			"title": "Title",
+			"realEstateType": "Real Estate Type",
+			"description": "Description",
+			"landSize": "Land Size",
+			"marketPrice": "Market Price",
+			"yearBuilt": "Year Built",
+			"street": "Street Address",
+			"zip": "ZIP",
+			"city": "City",
+			"state": "State",
+			"country": "Country",
+			"imageUrl": "Image URL",
+			"unitNumber": "Unit Number",
+			"floor": "Floor",
+			"unitSize": "Unit Size",
+			"rentalPrice": "Rental Price",
+			"status": "Status",
+			"numOfFloors": "Number of Floors",
+			"numOfRooms": "Number of Rooms",
+			"numOfBedrooms": "Number of Bedrooms",
+			"numOfBathrooms": "Number of Bathrooms",
+			"garages": "Number of Garages"
+		},
+		"unitMultiplicity": {
+			"single": {
+				"title": "Single-Unit",
+				"desc": "Select this option if you want to rent out the entire property to a single tenant"
+			},
+			"multi": {
+				"title": "Multi-Unit",
+				"desc": "Select this option if the property has multiple units and you want to rent them out individually"
+			}
+		}
+	},
+	"tenantCreation": {
+		"title": "Create Tenant",
+		"sections": {
+			"information": "Tenant Information",
+			"lease": "Lease Assignment",
+			"unit": "Unit Assignment",
+			"confirmation": "Confirmation"
+		},
+		"steps": {
+			"information": "Tenant Information",
+			"lease": "Lease Assignment",
+			"unit": "Unit Assignment",
+			"confirmation": "Confirmation"
+		},
+		"fields": {
+			"firstName": "First Name",
+			"lastName": "Last Name",
+			"email": "E-Mail",
+			"phone": "Phone",
+			"occupation": "Occupation",
+			"income": "Income",
+			"civilStatus": "Civil Status",
+			"unit": "Unit",
+			"startDate": "Start Date",
+			"endDate": "End Date",
+			"rentalPrice": "Rental Price",
+			"paymentFrequency": "Payment Frequency",
+			"leaseStatus": "Lease Status",
+			"notes": "Notes",
+			"unitIdentifier": "Unit Identifier",
+			"currentTenant": "Current Tenant",
+			"unitNumber": "Unit Number",
+			"floor": "Floor"
+		},
+		"leaseOptions": {
+			"new": {
+				"title": "New Lease",
+				"desc": "Select this option if you want to create a new lease for the tenant"
+			},
+			"existing": {
+				"title": "Existing Lease",
+				"desc": "Select this option if you want to assign an existing lease to the tenant"
+			}
+		}
+	},
+	"maintenanceTable": {
+		"title": "Maintenance Reports",
+		"subtitle": "All maintenance reports for your properties.",
+		"noUnit": "No Unit",
+		"columns": {
+			"creationDate": "Creation Date",
+			"title": "Title",
+			"status": "Status",
+			"priority": "Priority",
+			"unit": "Unit",
+			"category": "Category"
+		}
+	},
+	"dataTable": {
+		"search": "Search...",
+		"columns": "Columns",
+		"filters": "Filters",
+		"selectFilter": "Select Filter",
+		"apply": "Apply",
+		"noData": "No Data Available",
+		"noDataDesc": "There is no data available for this table, if you believe this is an error, please contact support.",
+		"previous": "Previous",
+		"next": "Next",
+		"pageOf": "Page {{page}} of {{count}}",
+		"viewAll": "View All",
+		"active": "Active",
+		"inactive": "Inactive",
+		"days30": "30 Days",
+		"days90": "90 Days"
+	},
+	"common": {
+		"save": "Save",
+		"cancel": "Cancel",
+		"create": "Create",
+		"delete": "Delete",
+		"edit": "Edit",
+		"search": "Search",
+		"filter": "Filter",
+		"sort": "Sort",
+		"language": "Language",
+		"english": "English",
+		"czech": "Czech",
+		"loading": "Loading..."
+	}
+} 

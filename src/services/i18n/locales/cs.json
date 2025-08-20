@@ -1,0 +1,338 @@
+{
+	"navbar": {
+		"appName": "Rentara",
+		"menu": "Menu",
+		"personal": "Osobní",
+		"home": "Domů",
+		"properties": "Nemovitosti",
+		"rentals": "Pronájmy",
+		"financials": "Finance",
+		"tenants": "Nájemníci",
+		"maintenance": "Údržba",
+		"messages": "Zprávy",
+		"calendar": "Kalendář"
+	},
+	"header": {
+		"profile": "Profil",
+		"settings": "Nastavení",
+		"logout": "Odhlásit se"
+	},
+	"auth": {
+		"welcomeBack": "Vítejte zpět!",
+		"welcome": "Vítejte!",
+		"signUpPrompt": "Zadejte prosím své údaje pro registraci.",
+		"email": "E‑mail",
+		"emailPlaceholder": "jan@novak.cz",
+		"password": "Heslo",
+		"firstName": "Jméno",
+		"lastName": "Příjmení",
+		"login": "Přihlásit se",
+		"signup": "Registrovat se",
+		"useDemo": "Použít demo účet",
+		"noAccount": "Nemáte účet? Zaregistrujte se",
+		"haveAccount": "Už máte účet? Přihlaste se",
+		"errors": {
+			"email": "Zadejte platnou e‑mailovou adresu",
+			"passwordMin": "Heslo musí mít alespoň 8 znaků",
+			"passwordComplexity": "Použijte alespoň jedno velké písmeno, jedno malé písmeno a jedno číslo",
+			"firstName": "Zadejte své jméno",
+			"lastName": "Zadejte své příjmení",
+			"enterEmail": "Zadejte svou e‑mailovou adresu",
+			"enterPassword": "Zadejte své heslo"
+		}
+	},
+	"notFound": {
+		"title": "Stránka nenalezena",
+		"desc": "Litujeme, stránka, kterou hledáte, neexistuje.",
+		"goHome": "Zpět na domovskou stránku"
+	},
+	"home": {
+		"welcome": "Vítejte, {{name}}!",
+		"tagline": "Sledujte, spravujte a rozvíjejte své realitní podnikání.",
+		"totalProperties": "Počet nemovitostí",
+		"totalUnits": "Počet jednotek",
+		"totalTenants": "Počet nájemníků",
+		"payments": "Platby",
+		"quickActions": "Rychlé akce",
+		"createProperty": "Vytvořit novou nemovitost",
+		"createPropertyDesc": "Přidat novou nemovitost včetně jednotek",
+		"createTenant": "Vytvořit nového nájemníka",
+		"createTenantDesc": "Přidat nového nájemníka k jednotce",
+		"yourProperties": "Vaše nemovitosti",
+		"notifications": "Vaše upozornění",
+		"noNotifications": "Nemáte žádná nová upozornění",
+		"viewAll": "Zobrazit vše",
+		"upcomingEvents": "Nadcházející události",
+		"newestTenants": "Nejnovější nájemníci",
+		"createdOn": "Vytvořeno dne {{date}}"
+	},
+	"tenants": {
+		"desc": "Tabulka níže zobrazuje všechny vaše nájemníky. Pro zobrazení profilu klikněte na jejich profilový obrázek.",
+		"addButton": "Přidat nájemníka"
+	},
+	"rentals": {
+		"title": "Nájemní jednotky",
+		"desc": "Zde jsou zobrazeny jednotky všech vašich nemovitostí. Jednotky můžete filtrovat podle nemovitosti pomocí výběru nahoře."
+	},
+	"properties": {
+		"title": "Nemovitosti",
+		"desc": "Zde jsou vaše nemovitosti. Pro více informací, například o jednotkách, klikněte na konkrétní nemovitost.",
+		"view": {
+			"detailed": "Detailní",
+			"compact": "Kompaktní"
+		},
+		"addButton": "Přidat nemovitost"
+	},
+	"maintenance": {
+		"title": "Údržba",
+		"desc": "Zde můžete zobrazovat a přidávat hlášení údržby.",
+		"reportButton": "Nahlásit údržbu"
+	},
+	"financials": {
+		"title": "Finance",
+		"desc": "Stránka nabízí přehled financí pro vybranou nemovitost nebo pro všechny nemovitosti dle vašeho výběru.",
+		"cards": {
+			"rentDue": "Splatné nájemné",
+			"rentPaid": "Zaplacené nájemné",
+			"activeLeases": "Aktivní nájemní smlouvy"
+		},
+		"tabs": {
+			"payments": "Platby",
+			"rentSchedule": "Plán nájemného",
+			"leases": "Nájemní smlouvy",
+			"expenses": "Výdaje"
+		},
+		"addPayment": "Přidat platbu"
+	},
+	"messages": {
+		"title": "Zprávy",
+		"you": "Vy",
+		"placeholder": "Zpráva",
+		"sendImage": "Odeslat obrázek",
+		"imageUrl": "URL obrázku",
+		"imageUrlDesc": "Zadejte URL obrázku, který chcete odeslat"
+	},
+	"calendar": {
+		"title": "Váš kalendář",
+		"week": "Týden",
+		"upcoming": "Nadcházející",
+		"upcomingLead": "Vaše tři nejbližší události:",
+		"categories": "Kategorie",
+		"maintenance": "Údržba",
+		"lease": "Nájemní smlouva",
+		"rent": "Nájemné",
+		"other": "Ostatní",
+		"eventsInWeek": "Události ve zvoleném týdnu",
+		"noEvents": "Žádné události."
+	},
+	"explorer": {
+		"title": "Průzkumník",
+		"unitDetails": "Detaily jednotky",
+		"unit": "Jednotka",
+		"floor": "Patro",
+		"rooms": "Pokoje",
+		"na": "N/A"
+	},
+	"account": {
+		"profile": "Profil",
+		"settings": "Nastavení"
+	},
+	"tenantProfile": {
+		"alert": {
+			"title": "Nájemník není přiřazen k jednotce",
+			"desc": "Tento nájemník není přiřazen k žádné jednotce, některé funkce proto nemusí být dostupné. Přiřazení můžete provést na stránce jednotky."
+		},
+		"noUnit": "Žádná jednotka",
+		"addedOn": "Přidáno: {{date}}",
+		"invite": {
+			"desc": "Tento nájemník zatím nevytvořil účet.",
+			"cta": "Poslat pozvánku"
+		},
+		"buttons": {
+			"message": "Zpráva"
+		},
+		"tabs": {
+			"information": "Informace",
+			"leaseHistory": "Historie nájemních smluv",
+			"maintenanceRequests": "Požadavky na údržbu"
+		}
+	},
+	"propertyDetail": {
+		"deleteButton": "Smazat nemovitost",
+		"dbTableIntro": "Tabulka níže zobrazuje data nemovitosti z databáze.",
+		"tableCaption": "Data nemovitosti z DB",
+		"columns": {
+			"title": "Název",
+			"value": "Hodnota"
+		},
+		"fields": {
+			"id": "ID",
+			"title": "Název",
+			"description": "Popis",
+			"realEstateType": "Typ nemovitosti",
+			"marketPrice": "Tržní cena",
+			"lotSize": "Rozloha pozemku",
+			"yearBuilt": "Rok výstavby",
+			"units": "Jednotky"
+		},
+		"unitLabel": "JEDNOTKA {{id}}"
+	},
+	"rentalDetail": {
+		"fallbackTitle": "Detaily jednotky",
+		"intro": "Zobrazte a spravujte detaily této nájemní jednotky",
+		"tabs": {
+			"details": "Detaily",
+			"leases": "Nájemní smlouvy",
+			"maintenance": "Údržba",
+			"expenses": "Výdaje"
+		},
+		"labels": {
+			"bedroom": "Ložnice",
+			"bathroom": "Koupelna",
+			"unitSize": "Velikost jednotky",
+			"garages": "Garáže"
+		},
+		"na": "N/A",
+		"leasesSubtitle": "Toto je historie nájemních smluv pro jednotku {{unit}}",
+		"addLease": "Přidat smlouvu",
+		"maintenanceSubtitle": "Toto je historie údržby pro tuto jednotku.",
+		"expensesSubtitle": "Toto jsou výdaje spojené s touto jednotkou."
+	},
+	"propertyCreation": {
+		"title": "Vytvořit nemovitost",
+		"sections": {
+			"unitType": "Typ jednotky",
+			"information": "Informace o nemovitosti",
+			"units": "Informace o jednotce",
+			"confirmation": "Potvrzení"
+		},
+		"steps": {
+			"information": "Informace o nemovitosti",
+			"units": "Informace o jednotce",
+			"confirmation": "Potvrzení"
+		},
+		"fields": {
+			"title": "Název",
+			"realEstateType": "Typ nemovitosti",
+			"description": "Popis",
+			"landSize": "Rozloha pozemku",
+			"marketPrice": "Tržní cena",
+			"yearBuilt": "Rok výstavby",
+			"street": "Ulice",
+			"zip": "PSČ",
+			"city": "Město",
+			"state": "Stát / Kraj",
+			"country": "Země",
+			"imageUrl": "URL obrázku",
+			"unitNumber": "Číslo jednotky",
+			"floor": "Patro",
+			"unitSize": "Velikost jednotky",
+			"rentalPrice": "Nájemné",
+			"status": "Stav",
+			"numOfFloors": "Počet podlaží",
+			"numOfRooms": "Počet pokojů",
+			"numOfBedrooms": "Počet ložnic",
+			"numOfBathrooms": "Počet koupelen",
+			"garages": "Počet garáží"
+		},
+		"unitMultiplicity": {
+			"single": {
+				"title": "Jednotná jednotka",
+				"desc": "Vyberte, pokud chcete pronajímat celou nemovitost jednomu nájemníkovi"
+			},
+			"multi": {
+				"title": "Více jednotek",
+				"desc": "Vyberte, pokud má nemovitost více jednotek a chcete je pronajímat jednotlivě"
+			}
+		}
+	},
+	"tenantCreation": {
+		"title": "Vytvořit nájemníka",
+		"sections": {
+			"information": "Informace o nájemníkovi",
+			"lease": "Přiřazení smlouvy",
+			"unit": "Přiřazení jednotky",
+			"confirmation": "Potvrzení"
+		},
+		"steps": {
+			"information": "Informace o nájemníkovi",
+			"lease": "Přiřazení smlouvy",
+			"unit": "Přiřazení jednotky",
+			"confirmation": "Potvrzení"
+		},
+		"fields": {
+			"firstName": "Jméno",
+			"lastName": "Příjmení",
+			"email": "E‑mail",
+			"phone": "Telefon",
+			"occupation": "Povolání",
+			"income": "Příjem",
+			"civilStatus": "Rodinný stav",
+			"unit": "Jednotka",
+			"startDate": "Datum začátku",
+			"endDate": "Datum konce",
+			"rentalPrice": "Nájemné",
+			"paymentFrequency": "Frekvence plateb",
+			"leaseStatus": "Stav smlouvy",
+			"notes": "Poznámky",
+			"unitIdentifier": "Identifikátor jednotky",
+			"currentTenant": "Aktuální nájemník",
+			"unitNumber": "Číslo jednotky",
+			"floor": "Patro"
+		},
+		"leaseOptions": {
+			"new": {
+				"title": "Nová smlouva",
+				"desc": "Zvolte, pokud chcete pro nájemníka vytvořit novou smlouvu"
+			},
+			"existing": {
+				"title": "Existující smlouva",
+				"desc": "Zvolte, pokud chcete nájemníkovi přiřadit existující smlouvu"
+			}
+		}
+	},
+	"maintenanceTable": {
+		"title": "Hlášení údržby",
+		"subtitle": "Všechna hlášení údržby vašich nemovitostí.",
+		"noUnit": "Žádná jednotka",
+		"columns": {
+			"creationDate": "Datum vytvoření",
+			"title": "Název",
+			"status": "Stav",
+			"priority": "Priorita",
+			"unit": "Jednotka",
+			"category": "Kategorie"
+		}
+	},
+	"dataTable": {
+		"search": "Hledat...",
+		"columns": "Sloupce",
+		"filters": "Filtry",
+		"selectFilter": "Vyberte filtr",
+		"apply": "Použít",
+		"noData": "Žádná data k dispozici",
+		"noDataDesc": "Pro tuto tabulku nejsou dostupná žádná data. Pokud si myslíte, že jde o chybu, kontaktujte podporu.",
+		"previous": "Předchozí",
+		"next": "Další",
+		"pageOf": "Strana {{page}} z {{count}}",
+		"viewAll": "Zobrazit vše",
+		"active": "Aktivní",
+		"inactive": "Neaktivní",
+		"days30": "30 dní",
+		"days90": "90 dní"
+	},
+	"common": {
+		"save": "Uložit",
+		"cancel": "Zrušit",
+		"create": "Vytvořit",
+		"delete": "Smazat",
+		"edit": "Upravit",
+		"search": "Hledat",
+		"filter": "Filtrovat",
+		"sort": "Seřadit",
+		"language": "Jazyk",
+		"english": "Angličtina",
+		"czech": "Čeština",
+		"loading": "Načítání..."
+	}
+} 
