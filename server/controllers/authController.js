@@ -37,7 +37,7 @@ export async function createRealtor(req, res) {
             res.status(409).json({message: 'User with that email already exists'});
         }
         else {
-            console.log(error)
+            console.error('Signup error:', error)
             res.status(500).json({message: 'Something went wrong'});
         }
     }
@@ -57,14 +57,25 @@ export async function login(req, res) {
             return res.status(401).json({ message: "Invalid email or password" });
         }
 
-        // eslint-disable-next-line no-undef
-        const accessToken = jwt.sign({ userId: user.id, email: user.email }, process.env.SECRET_KEY, { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN });
+        const secretKey = process.env.SECRET_KEY;
+        const refreshSecret = process.env.REFRESH_TOKEN_SECRET;
+        const accessExp = process.env.ACCESS_TOKEN_EXPIRES_IN || '15m';
+        const refreshExp = process.env.REFRESH_TOKEN_EXPIRES_IN || '7d';
 
-        // eslint-disable-next-line no-undef
-        const refreshToken = jwt.sign({ userId: user.id, email: user.email }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN });
+        if (!secretKey || !refreshSecret) {
+            console.error('Login error: Missing JWT secrets', {
+                hasSecretKey: Boolean(secretKey),
+                hasRefreshSecret: Boolean(refreshSecret)
+            });
+            return res.status(500).json({ message: 'Server misconfigured: missing JWT secrets' });
+        }
+
+        const accessToken = jwt.sign({ userId: user.id, email: user.email }, secretKey, { expiresIn: accessExp });
+        const refreshToken = jwt.sign({ userId: user.id, email: user.email }, refreshSecret, { expiresIn: refreshExp });
 
         res.status(200).json({ message: "Login successful", accessToken: accessToken, refreshToken: refreshToken });
     } catch (error) {
+        console.error('Login error:', error);
         res.status(500).json({ message: "Error logging in" });
     }
 }
@@ -77,9 +88,20 @@ export async function refresh(req, res) {
     }
 
     try {
-        // Verify the refresh token
-        // eslint-disable-next-line no-undef
-        const payload = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+        const secretKey = process.env.SECRET_KEY;
+        const refreshSecret = process.env.REFRESH_TOKEN_SECRET;
+        const accessExp = process.env.ACCESS_TOKEN_EXPIRES_IN || '15m';
+        const refreshExp = process.env.REFRESH_TOKEN_EXPIRES_IN || '7d';
+
+        if (!secretKey || !refreshSecret) {
+            console.error('Refresh error: Missing JWT secrets', {
+                hasSecretKey: Boolean(secretKey),
+                hasRefreshSecret: Boolean(refreshSecret)
+            });
+            return res.status(500).json({ message: 'Server misconfigured: missing JWT secrets' });
+        }
+
+        const payload = jwt.verify(refreshToken, refreshSecret);
 
         // Check if the user exists
         const user = await prisma.user.findUnique({
@@ -93,13 +115,12 @@ export async function refresh(req, res) {
         }
 
         // Generate new access token and refresh token
-        // eslint-disable-next-line no-undef
-        const newAccessToken = jwt.sign({ userId: user.id, email: user.email }, process.env.SECRET_KEY, { expiresIn: process.env.ACCESS_TOKEN_EXPIRES_IN });
-        // eslint-disable-next-line no-undef
-        const newRefreshToken = jwt.sign({ userId: user.id, email: user.email }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN });
+        const newAccessToken = jwt.sign({ userId: user.id, email: user.email }, secretKey, { expiresIn: accessExp });
+        const newRefreshToken = jwt.sign({ userId: user.id, email: user.email }, refreshSecret, { expiresIn: refreshExp });
 
         res.status(200).json({ message: "Refresh successful", accessToken: newAccessToken, refreshToken: newRefreshToken });
     } catch (error) {
+        console.error('Refresh error:', error);
         res.status(500).json({ message: "Error refreshing token" });
     }
 }
