@@ -8,7 +8,7 @@ const mutex = new Mutex();
 
 
 // eslint-disable-next-line no-undef
-const baseUrl = import.meta.env.VITE_API_URL;
+const baseUrl = import.meta.env.VITE_API_URL || '';
 
 const baseQuery = fetchBaseQuery({
     baseUrl: baseUrl,
