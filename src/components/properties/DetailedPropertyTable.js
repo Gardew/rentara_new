@@ -19,11 +19,14 @@ import {Image} from "../ui/image.tsx"
 import {cn} from "../../utils.ts";
 import {useState} from "react";
 import DeleteDialog from "../general/DeleteDialog.js";
+import { useTranslation } from 'react-i18next';
 
 const DetailedPropertyTable = ({ properties }) => {
     const navigate = useNavigate()
 
     const [deleteProperty, {isLoading: isDeletingProperty}] = useDeletePropertyMutation()
+
+    const { t } = useTranslation();
 
 
     const getLocation = (property) => {
@@ -120,7 +123,7 @@ const DetailedPropertyTable = ({ properties }) => {
                         <DropdownMenuSub>
                             <DropdownMenuSubTrigger className="text-md">
                                 <Boxes className="mr-2 h-4 w-4" />
-                                <span>View Rentals</span>
+                                <span>{t('properties.viewRentals')}</span>
                             </DropdownMenuSubTrigger>
                             <DropdownMenuPortal>
                                 <DropdownMenuSubContent>
@@ -137,7 +140,7 @@ const DetailedPropertyTable = ({ properties }) => {
                         </DropdownMenuSub>
                         <DropdownMenuItem className="flex flex-row text-md gap-2" disabled>
                             <Plus className="w-4 h-4"/>
-                            Add Rental
+                            {t('properties.addRental')}
                         </DropdownMenuItem>
                     </DropdownMenuGroup>
 
@@ -244,7 +247,7 @@ const DetailedPropertyTable = ({ properties }) => {
             <div className="flex flex-col gap-1 ">
                 {/*<Header/>*/}
                 <p className="text-muted-foreground font-400 w-full ">
-                    No properties found.
+                    {t('properties.noPropertiesFound')}
                 </p>
             </div>
         )

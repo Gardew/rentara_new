@@ -23,12 +23,15 @@ import {isAfter, isBefore} from "date-fns";
 import Link from "../general/Link.tsx";
 import DeleteDialog from "../general/DeleteDialog";
 import {useState} from "react";
+import { useTranslation } from 'react-i18next';
 
 
 const TenantTable = ({tenants}) => {
     const navigate = useNavigate();
 
     const [deleteTenant, {isLoading: isDeletingTenant}] = useDeleteTenantMutation()
+
+    const { t } = useTranslation();
 
 
     // True if the user has an active lease (end date is after today or no end date at all)
@@ -49,8 +52,8 @@ const TenantTable = ({tenants}) => {
                 <DeleteDialog
                     open={deleteModalOpen}
                     setOpen={setDeleteModalOpen}
-                    title="Delete Tenant"
-                    content="Are you sure you want to delete this tenant? This action cannot be undone."
+                    title={t('tenants.table.deleteTenant')}
+                    content={t('tenants.table.deleteConfirm')}
                     onConfirm={() => deleteTenant(tenant?.id)}
                 />
 
@@ -58,7 +61,7 @@ const TenantTable = ({tenants}) => {
                     <DropdownMenuGroup>
                         <DropdownMenuItem className="flex flex-row text-sm gap-2" onClick={() => navigate(`/tenants/${tenant?.id}`)}>
                             <UserRound className="w-4 h-4 "/>
-                            View Profile
+                            {t('tenants.table.viewProfile')}
                         </DropdownMenuItem>
                     </DropdownMenuGroup>
 
@@ -69,7 +72,7 @@ const TenantTable = ({tenants}) => {
                                           onClick={() => setDeleteModalOpen(true)}
                         >
                             <Trash2 className="w-4 h-4"/>
-                            Delete Tenant
+                            {t('tenants.table.deleteTenant')}
                         </DropdownMenuItem>
                     </DropdownMenuGroup>
 
@@ -82,7 +85,7 @@ const TenantTable = ({tenants}) => {
     const columns: ColumnDef<Tenant>[] = [
         {
             id: "tenant",
-            header: "Tenant",
+            header: t('tenants.table.tenant'),
             enableSorting: false,
             cell: ({ row }) => {
 
@@ -111,7 +114,7 @@ const TenantTable = ({tenants}) => {
         },
         {
             accessorKey: "leaseStatus",
-            header: "Lease Status",
+            header: t('tenants.table.leaseStatus'),
             enableSorting: true,
             cell: ({ row }) => {
                 const tenant = row.original;
@@ -119,13 +122,13 @@ const TenantTable = ({tenants}) => {
 
                 const getLeaseText = (lease) => {
                     if (lease?.endDate && isBefore(new Date(lease?.endDate), new Date())) {
-                        return "Lease Ended on " + dateParser(lease?.endDate)
+                        return t('tenants.table.leaseEndedOn', { date: dateParser(lease?.endDate) })
                     }
                     else if (lease?.endDate) {
-                        return "Lease Ends on " + dateParser(lease?.endDate)
+                        return t('tenants.table.leaseEndsOn', { date: dateParser(lease?.endDate) })
                     }
                     else {
-                        return "No Lease End Date"
+                        return t('tenants.table.noLeaseEndDate')
                     }
                 }
 
@@ -146,11 +149,11 @@ const TenantTable = ({tenants}) => {
                         <div className="flex flex-col">
                             <p className="font-400 text-md ">
                                 {
-                                    activeLeases.length ? `${activeLeases.length} Active Lease${activeLeases.length > 1 ? 's' : ''}` : "No Active Lease"
+                                    activeLeases.length ? t('tenants.table.activeLeases', { count: activeLeases.length }) : t('tenants.table.noActiveLease')
                                 }
                             </p>
                             <p className="font-300 text-gray-500 text-sm">
-                                {mostRecentLease ? getLeaseText(mostRecentLease) : "No Lease"}
+                                {mostRecentLease ? getLeaseText(mostRecentLease) : t('tenants.table.noLease')}
                             </p>
                         </div>
                     </div>
@@ -166,7 +169,7 @@ const TenantTable = ({tenants}) => {
         },
         {
             id: "currentUnit",
-            header: "Current Unit",
+            header: t('tenants.table.currentUnit'),
             enableSorting: true,
             cell: ({ row }) => {
                 const tenant = row.original;
@@ -182,7 +185,7 @@ const TenantTable = ({tenants}) => {
 
                 if (!mostRecentUnit) return (
                     <p className="font-300 text-md text-gray-500">
-                        No Unit
+                        {t('tenants.table.noUnit')}
                     </p>
                 )
                 return (
@@ -200,7 +203,7 @@ const TenantTable = ({tenants}) => {
         },
         {
             accessorKey: "user",
-            header: "User",
+            header: t('tenants.table.user'),
             cell: ({ row }) => {
                 return (
                     <div className="flex w-fit items-start flex-col gap-2">
@@ -209,20 +212,20 @@ const TenantTable = ({tenants}) => {
                                 <TooltipTrigger asChild>
                                     <span>
                                         <Badge variant="negative" className="h-fit whitespace-nowrap" >
-                                            Unverified Tenant
+                                            {t('tenants.table.unverifiedTenant')}
                                         </Badge>
                                     </span>
                                 </TooltipTrigger>
                                 <TooltipContent>
                                     <p>
-                                        This tenant has not created an account yet.
-                                    </p>
+                                        {t('tenantProfile.invite.desc')}
+                                        </p>
                                 </TooltipContent>
                             </Tooltip>
                         </TooltipProvider>
                         <Button variant="default" size="md">
                             <Send className="mr-2 w-3 h-3"/>
-                            Contact
+                            {t('tenants.table.contact')}
                         </Button>
                     </div>
                 )
@@ -235,7 +238,7 @@ const TenantTable = ({tenants}) => {
         },
         {
             id: "createdAt",
-            header: "Created At",
+            header: t('tenants.table.createdAt'),
             enableSorting: true,
             cell: ({ row }) => <div className="lowercase">{dateParser(row.getValue("createdAt"))}</div>,
             meta: {
@@ -245,7 +248,7 @@ const TenantTable = ({tenants}) => {
         },
         {
             id: "actions",
-            header: "Actions",
+            header: t('tenants.table.actions'),
             enableHiding: false,
             cell: ({ row }) => {
                 const tenant = row.original

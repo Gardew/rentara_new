@@ -68,7 +68,27 @@
 	},
 	"tenants": {
 		"desc": "The table below shows all your tenants. To view a tenant's profile page, click on their profile picture.",
-		"addButton": "Add Tenant"
+		"addButton": "Add Tenant",
+		"table": {
+			"tenant": "Tenant",
+			"leaseStatus": "Lease Status",
+			"leaseEndedOn": "Lease ended on {{date}}",
+			"leaseEndsOn": "Lease ends on {{date}}",
+			"noLeaseEndDate": "No lease end date",
+			"activeLeases": "Active leases: {{count}}",
+			"noActiveLease": "No active lease",
+			"noLease": "No lease",
+			"currentUnit": "Current Unit",
+			"noUnit": "No Unit",
+			"user": "User",
+			"unverifiedTenant": "Unverified Tenant",
+			"contact": "Contact",
+			"createdAt": "Created At",
+			"actions": "Actions",
+			"viewProfile": "View Profile",
+			"deleteTenant": "Delete Tenant",
+			"deleteConfirm": "Are you sure you want to delete this tenant? This action cannot be undone."
+		}
 	},
 	"rentals": {
 		"title": "Rental Units",
@@ -81,12 +101,16 @@
 			"detailed": "Detailed",
 			"compact": "Compact"
 		},
-		"addButton": "Add Property"
+		"addButton": "Add Property",
+		"viewRentals": "View Rentals",
+		"addRental": "Add Rental",
+		"noPropertiesFound": "No properties found."
 	},
 	"maintenance": {
 		"title": "Maintenance",
 		"desc": "This is where you can view and add maintenance reports.",
-		"reportButton": "Report Maintenance"
+		"reportButton": "Report Maintenance",
+		"reportDescription": "Use this form to create a new maintenance report."
 	},
 	"financials": {
 		"title": "Financials",
@@ -102,7 +126,42 @@
 			"leases": "Leases",
 			"expenses": "Expenses"
 		},
-		"addPayment": "Add Payment"
+		"addPayment": "Add Payment",
+		"rentScheduleSubtitle": "This table shows all expected lease payments and keeps track of their payment status.",
+		"leasesSubtitle": "These are all your leases.",
+		"filters": {
+			"viewAll": "View All",
+			"unpaid": "Unpaid",
+			"overdue": "Overdue",
+			"active": "Active",
+			"inactive": "Inactive"
+		}
+	},
+	"leases": {
+		"table": {
+			"lease": "Lease",
+			"tenant": "Tenant",
+			"noTenant": "No Tenant",
+			"startDate": "Start Date",
+			"endDate": "End Date",
+			"rentalPrice": "Rental Price",
+			"unit": "Unit",
+			"noUnit": "No Unit",
+			"status": "Status",
+			"paymentFrequency": "Payment Frequency",
+			"notes": "Notes",
+			"specialTerms": "Special Terms",
+			"actions": "Actions",
+			"view": "View",
+			"edit": "Edit",
+			"delete": "Delete",
+			"deleteLease": "Delete Lease",
+			"deleteLeaseConfirm": "Are you sure you want to delete this lease? This action cannot be undone.",
+			"deleteLeases": "Delete Leases",
+			"deleteLeasesConfirm": "You are about to delete {{count}} lease(s). Are you sure?",
+			"selectedCount": "{{count}} Selected",
+			"setStatus": "Set Status"
+		}
 	},
 	"messages": {
 		"title": "Messages",
@@ -218,121 +277,52 @@
 			"landSize": "Land Size",
 			"marketPrice": "Market Price",
 			"yearBuilt": "Year Built",
-			"street": "Street Address",
-			"zip": "ZIP",
+			"units": "Units",
+			"address": "Address",
 			"city": "City",
-			"state": "State",
+			"postalCode": "Postal Code",
 			"country": "Country",
-			"imageUrl": "Image URL",
-			"unitNumber": "Unit Number",
-			"floor": "Floor",
-			"unitSize": "Unit Size",
-			"rentalPrice": "Rental Price",
-			"status": "Status",
-			"numOfFloors": "Number of Floors",
-			"numOfRooms": "Number of Rooms",
-			"numOfBedrooms": "Number of Bedrooms",
-			"numOfBathrooms": "Number of Bathrooms",
-			"garages": "Number of Garages"
-		},
-		"unitMultiplicity": {
-			"single": {
-				"title": "Single-Unit",
-				"desc": "Select this option if you want to rent out the entire property to a single tenant"
-			},
-			"multi": {
-				"title": "Multi-Unit",
-				"desc": "Select this option if the property has multiple units and you want to rent them out individually"
-			}
+			"images": "Images"
 		}
 	},
-	"tenantCreation": {
-		"title": "Create Tenant",
-		"sections": {
-			"information": "Tenant Information",
-			"lease": "Lease Assignment",
-			"unit": "Unit Assignment",
-			"confirmation": "Confirmation"
+	"bulk": {
+		"title": "Bulk Property Creation",
+		"subtitle": "You can add multiple properties at once by uploading a CSV file in the specified format.",
+		"step1": {
+			"title": "Download CSV Template",
+			"desc": "Download the CSV template and fill out the data for each property."
 		},
-		"steps": {
-			"information": "Tenant Information",
-			"lease": "Lease Assignment",
-			"unit": "Unit Assignment",
-			"confirmation": "Confirmation"
+		"step2": {
+			"title": "Upload CSV File",
+			"desc": "Upload the filled CSV file to create properties in bulk."
 		},
-		"fields": {
-			"firstName": "First Name",
-			"lastName": "Last Name",
-			"email": "E-Mail",
-			"phone": "Phone",
-			"occupation": "Occupation",
-			"income": "Income",
-			"civilStatus": "Civil Status",
-			"unit": "Unit",
-			"startDate": "Start Date",
-			"endDate": "End Date",
-			"rentalPrice": "Rental Price",
-			"paymentFrequency": "Payment Frequency",
-			"leaseStatus": "Lease Status",
-			"notes": "Notes",
-			"unitIdentifier": "Unit Identifier",
-			"currentTenant": "Current Tenant",
-			"unitNumber": "Unit Number",
-			"floor": "Floor"
+		"step3": {
+			"title": "Review & Confirm",
+			"desc": "Review the generated units & properties and confirm the creation."
 		},
-		"leaseOptions": {
-			"new": {
-				"title": "New Lease",
-				"desc": "Select this option if you want to create a new lease for the tenant"
-			},
-			"existing": {
-				"title": "Existing Lease",
-				"desc": "Select this option if you want to assign an existing lease to the tenant"
-			}
-		}
-	},
-	"maintenanceTable": {
-		"title": "Maintenance Reports",
-		"subtitle": "All maintenance reports for your properties.",
-		"noUnit": "No Unit",
-		"columns": {
-			"creationDate": "Creation Date",
+		"template": {
 			"title": "Title",
-			"status": "Status",
-			"priority": "Priority",
-			"unit": "Unit",
-			"category": "Category"
+			"description": "Description",
+			"realEstateType": "Real Estate Type",
+			"marketPrice": "Market Price",
+			"landSize": "Land Size",
+			"yearBuilt": "Year Built",
+			"units": "Units",
+			"address": "Address",
+			"city": "City",
+			"postalCode": "Postal Code",
+			"country": "Country"
 		}
 	},
-	"dataTable": {
-		"search": "Search...",
-		"columns": "Columns",
-		"filters": "Filters",
-		"selectFilter": "Select Filter",
-		"apply": "Apply",
-		"noData": "No Data Available",
-		"noDataDesc": "There is no data available for this table, if you believe this is an error, please contact support.",
-		"previous": "Previous",
-		"next": "Next",
-		"pageOf": "Page {{page}} of {{count}}",
-		"viewAll": "View All",
-		"active": "Active",
-		"inactive": "Inactive",
-		"days30": "30 Days",
-		"days90": "90 Days"
+	"forms": {
+		"errors": {
+			"required": "This field is required"
+		}
 	},
-	"common": {
-		"save": "Save",
-		"cancel": "Cancel",
-		"create": "Create",
-		"delete": "Delete",
-		"edit": "Edit",
-		"search": "Search",
-		"filter": "Filter",
-		"sort": "Sort",
-		"language": "Language",
-		"english": "English",
-		"czech": "Czech",
-		"loading": "Loading..."
-	}
+	"expenses": {
+		"addExpense": "Add Expense",
+		"addExpenseDesc": "Add a new expense to the system"
+	},
+	"cancel": "Cancel",
+	"submit": "Submit"
 } 

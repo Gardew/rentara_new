@@ -38,6 +38,7 @@ import {
 } from "../../services/api/bulkApi";
 import {Checkbox} from "../ui/checkbox.tsx";
 import {ButtonGroup, ButtonGroupItem} from "../ui/button-group.tsx";
+import { useTranslation } from 'react-i18next';
 
 const PaymentScheduleActions = ({ paymentSchedule }) => {
     const [editModalOpen, setEditModalOpen] = useState(false)
@@ -461,14 +462,16 @@ const PaymentScheduleTable = ({ paymentSchedules, ...props }) => {
 
     }, [selectedFilter, paymentSchedules])
 
+    const { t } = useTranslation();
+
     return (
         <div className={"border-2 border-border p-4 rounded-lg"}>
             <DataTable
                 data={filteredPaymentSchedules}
                 columns={columns}
                 defaultSort={{id: "dueDate", desc: false}}
-                title="Rent Schedule"
-                subtitle="This table shows all expected lease payments and keeps track of their payment status."
+                title={t('financials.tabs.rentSchedule')}
+                subtitle={t('financials.rentScheduleSubtitle')}
                 icon={<CalendarClock className={"w-5 h-5"} />}
                 onRowSelectionChange={(selectedRows: LeasePaymentSchedule[]) => setSelectedRows(selectedRows)}
                 {...props}
@@ -479,13 +482,13 @@ const PaymentScheduleTable = ({ paymentSchedules, ...props }) => {
                     onValueChange={(value) => setSelectedFilter(value)}
                 >
                     <ButtonGroupItem value={"all"} >
-                        View All
+                        {t('financials.filters.viewAll')}
                     </ButtonGroupItem>
                     <ButtonGroupItem value={"only-unpaid"}>
-                        Unpaid
+                        {t('financials.filters.unpaid')}
                     </ButtonGroupItem>
                     <ButtonGroupItem value={"only-overdue"}>
-                        Overdue
+                        {t('financials.filters.overdue')}
                     </ButtonGroupItem>
                 </ButtonGroup>
 

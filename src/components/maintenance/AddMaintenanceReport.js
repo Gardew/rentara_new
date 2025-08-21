@@ -25,6 +25,7 @@ import {useGetTenantsQuery} from "../../services/api/tenantApi.js";
 import {Drill, Flag} from "lucide-react";
 import RentalSelection from "../comboboxes/RentalSelection.js";
 import {useCreateMaintenanceReportMutation} from "../../services/api/maintenanceApi.js";
+import { useTranslation } from 'react-i18next';
 
 
 const AddMaintenanceReport = (props) => {
@@ -36,6 +37,8 @@ const AddMaintenanceReport = (props) => {
     const {data: tenants} = useGetTenantsQuery();
 
     const [submitReport, {isLoading: isSubmitting}] = useCreateMaintenanceReportMutation();
+
+    const { t } = useTranslation();
 
     const maintenanceForm = useForm({
         resolver: zodResolver(maintenanceReportSchema),
@@ -71,10 +74,10 @@ const AddMaintenanceReport = (props) => {
                         <Drill className="w-6 h-6"/>
                     </DialogIcon>
                     <DialogTitle>
-                        Report Maintenance
+                        {t('maintenance.reportButton')}
                     </DialogTitle>
                     <DialogDescription>
-                        Use this form to create a new maintenance report.
+                        {t('maintenance.reportDescription')}
                     </DialogDescription>
                 </DialogHeader>
 
@@ -217,8 +220,7 @@ const AddMaintenanceReport = (props) => {
                                     </FormControl>
                                     <FormMessage/>
                                     <FormDescription>
-                                        If you want to report a maintenance issue on behalf of a tenant, you can select
-                                        them here.
+                                        {t('tenantProfile.invite.desc')}
                                     </FormDescription>
                                 </FormItem>
                             )}
@@ -242,11 +244,11 @@ const AddMaintenanceReport = (props) => {
                             <Button type="button" variant="outline" className="w-full" onClick={() => {
                                 setOpen(false)
                                 maintenanceForm.reset();
-                            }}>Cancel</Button>
+                            }}>{t('cancel')}</Button>
                             <Button type="submit" variant="gradient" className="w-full" isLoading={isSubmitting}
                             >
                                 <Flag className="h-4 w-4 mr-2"/>
-                                Submit
+                                {t('submit')}
                             </Button>
                         </div>
 

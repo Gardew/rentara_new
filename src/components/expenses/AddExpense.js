@@ -21,6 +21,7 @@ import {ExternalLink, FilePlus2, Plus} from "lucide-react";
 import RentalSelection from "../comboboxes/RentalSelection.js";
 import {useGetLeasesQuery} from "../../services/api/leaseApi.js";
 import {useCreateExpenseMutation} from "../../services/api/financialsApi.js";
+import { useTranslation } from 'react-i18next';
 
 
 const AddExpense = (props) => {
@@ -48,6 +49,8 @@ const AddExpense = (props) => {
         },
     })
 
+    const { t } = useTranslation();
+
     const onSubmit = (data) => {
         createExpense(data).then((res) => {
             if (res.data) {
@@ -62,7 +65,7 @@ const AddExpense = (props) => {
         <Dialog {...props} onOpenChange={() => setOpen(!open)} open={open}>
             <Button onClick={() => setOpen(!open)} variant="outline" type="button">
                 <FilePlus2 className="h-4 w-4 mr-2"/>
-                Add Expense
+                {t('expenses.addExpense')}
             </Button>
             <DialogContent>
                 <DialogHeader>
@@ -70,10 +73,10 @@ const AddExpense = (props) => {
                         <ExternalLink className="w-6 h-6"/>
                     </DialogIcon>
                     <DialogTitle>
-                        Add Expense
+                        {t('expenses.addExpense')}
                     </DialogTitle>
                     <DialogDescription>
-                        Add a new expense to the system
+                        {t('expenses.addExpenseDesc')}
                     </DialogDescription>
                 </DialogHeader>
 
@@ -221,11 +224,11 @@ const AddExpense = (props) => {
                             <Button type="button" variant="outline" className="w-full" onClick={() => {
                                 setOpen(false)
                                 expenseForm.reset();
-                            }}>Cancel</Button>
+                            }}>{t('cancel')}</Button>
                             <Button type="submit" variant="gradient" className="w-full" isLoading={isCreating}
                             >
                                 <Plus className="h-4 w-4 mr-2"/>
-                                Submit
+                                {t('submit')}
                             </Button>
                         </div>
 

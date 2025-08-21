@@ -68,7 +68,27 @@
 	},
 	"tenants": {
 		"desc": "Tabulka níže zobrazuje všechny vaše nájemníky. Pro zobrazení profilu klikněte na jejich profilový obrázek.",
-		"addButton": "Přidat nájemníka"
+		"addButton": "Přidat nájemníka",
+		"table": {
+			"tenant": "Nájemník",
+			"leaseStatus": "Stav smlouvy",
+			"leaseEndedOn": "Smlouva ukončena dne {{date}}",
+			"leaseEndsOn": "Smlouva končí dne {{date}}",
+			"noLeaseEndDate": "Bez data ukončení",
+			"activeLeases": "Aktivní smlouvy: {{count}}",
+			"noActiveLease": "Žádná aktivní smlouva",
+			"noLease": "Žádná smlouva",
+			"currentUnit": "Aktuální jednotka",
+			"noUnit": "Žádná jednotka",
+			"user": "Uživatel",
+			"unverifiedTenant": "Neověřený nájemník",
+			"contact": "Kontaktovat",
+			"createdAt": "Vytvořeno",
+			"actions": "Akce",
+			"viewProfile": "Zobrazit profil",
+			"deleteTenant": "Smazat nájemníka",
+			"deleteConfirm": "Opravdu chcete smazat tohoto nájemníka? Tato akce je nevratná."
+		}
 	},
 	"rentals": {
 		"title": "Nájemní jednotky",
@@ -81,12 +101,16 @@
 			"detailed": "Detailní",
 			"compact": "Kompaktní"
 		},
-		"addButton": "Přidat nemovitost"
+		"addButton": "Přidat nemovitost",
+		"viewRentals": "Zobrazit pronájmy",
+		"addRental": "Přidat pronájem",
+		"noPropertiesFound": "Žádné nemovitosti nebyly nalezeny."
 	},
 	"maintenance": {
 		"title": "Údržba",
 		"desc": "Zde můžete zobrazovat a přidávat hlášení údržby.",
-		"reportButton": "Nahlásit údržbu"
+		"reportButton": "Nahlásit údržbu",
+		"reportDescription": "Tento formulář použijte k vytvoření nového hlášení údržby."
 	},
 	"financials": {
 		"title": "Finance",
@@ -102,7 +126,42 @@
 			"leases": "Nájemní smlouvy",
 			"expenses": "Výdaje"
 		},
-		"addPayment": "Přidat platbu"
+		"addPayment": "Přidat platbu",
+		"rentScheduleSubtitle": "Tato tabulka zobrazuje všechny plánované platby nájemného a sleduje jejich stav.",
+		"leasesSubtitle": "Toto jsou všechny vaše nájemní smlouvy.",
+		"filters": {
+			"viewAll": "Zobrazit vše",
+			"unpaid": "Nezaplacené",
+			"overdue": "Po splatnosti",
+			"active": "Aktivní",
+			"inactive": "Neaktivní"
+		}
+	},
+	"leases": {
+		"table": {
+			"lease": "Smlouva",
+			"tenant": "Nájemník",
+			"noTenant": "Žádný nájemník",
+			"startDate": "Datum začátku",
+			"endDate": "Datum konce",
+			"rentalPrice": "Nájemné",
+			"unit": "Jednotka",
+			"noUnit": "Žádná jednotka",
+			"status": "Stav",
+			"paymentFrequency": "Frekvence plateb",
+			"notes": "Poznámky",
+			"specialTerms": "Zvláštní ujednání",
+			"actions": "Akce",
+			"view": "Zobrazit",
+			"edit": "Upravit",
+			"delete": "Smazat",
+			"deleteLease": "Smazat smlouvu",
+			"deleteLeaseConfirm": "Opravdu chcete smazat tuto smlouvu? Tato akce je nevratná.",
+			"deleteLeases": "Smazat smlouvy",
+			"deleteLeasesConfirm": "Chystáte se smazat {{count}} smlouvu/y. Jste si jisti?",
+			"selectedCount": "Vybráno: {{count}}",
+			"setStatus": "Nastavit stav"
+		}
 	},
 	"messages": {
 		"title": "Zprávy",
@@ -220,8 +279,11 @@
 			"yearBuilt": "Rok výstavby",
 			"street": "Ulice",
 			"zip": "PSČ",
+			"units": "Jednotky",
+			"address": "Adresa",
 			"city": "Město",
 			"state": "Stát / Kraj",
+			"postalCode": "PSČ",
 			"country": "Země",
 			"imageUrl": "URL obrázku",
 			"unitNumber": "Číslo jednotky",
@@ -236,6 +298,7 @@
 			"garages": "Počet garáží"
 		},
 		"unitMultiplicity": {
+			"images": "Obrázky",
 			"single": {
 				"title": "Jednotná jednotka",
 				"desc": "Vyberte, pokud chcete pronajímat celou nemovitost jednomu nájemníkovi"
@@ -244,51 +307,36 @@
 				"title": "Více jednotek",
 				"desc": "Vyberte, pokud má nemovitost více jednotek a chcete je pronajímat jednotlivě"
 			}
+			
 		}
 	},
-	"tenantCreation": {
-		"title": "Vytvořit nájemníka",
-		"sections": {
-			"information": "Informace o nájemníkovi",
-			"lease": "Přiřazení smlouvy",
-			"unit": "Přiřazení jednotky",
-			"confirmation": "Potvrzení"
+	"bulk": {
+		"title": "Hromadné vytvoření nemovitostí",
+		"subtitle": "Najednou můžete přidat více nemovitostí nahráním souboru CSV ve specifikovaném formátu.",
+		"step1": {
+			"title": "Stáhnout šablonu CSV",
+			"desc": "Stáhněte si šablonu CSV a vyplňte data pro každou nemovitost."
 		},
-		"steps": {
-			"information": "Informace o nájemníkovi",
-			"lease": "Přiřazení smlouvy",
-			"unit": "Přiřazení jednotky",
-			"confirmation": "Potvrzení"
+		"step2": {
+			"title": "Nahrát soubor CSV",
+			"desc": "Nahrajte vyplněný CSV soubor pro hromadné vytvoření nemovitostí."
 		},
-		"fields": {
-			"firstName": "Jméno",
-			"lastName": "Příjmení",
-			"email": "E‑mail",
-			"phone": "Telefon",
-			"occupation": "Povolání",
-			"income": "Příjem",
-			"civilStatus": "Rodinný stav",
-			"unit": "Jednotka",
-			"startDate": "Datum začátku",
-			"endDate": "Datum konce",
-			"rentalPrice": "Nájemné",
-			"paymentFrequency": "Frekvence plateb",
-			"leaseStatus": "Stav smlouvy",
-			"notes": "Poznámky",
-			"unitIdentifier": "Identifikátor jednotky",
-			"currentTenant": "Aktuální nájemník",
-			"unitNumber": "Číslo jednotky",
-			"floor": "Patro"
+		"step3": {
+			"title": "Zkontrolovat a potvrdit",
+			"desc": "Zkontrolujte vygenerované jednotky a nemovitosti a potvrďte vytvoření."
 		},
-		"leaseOptions": {
-			"new": {
-				"title": "Nová smlouva",
-				"desc": "Zvolte, pokud chcete pro nájemníka vytvořit novou smlouvu"
-			},
-			"existing": {
-				"title": "Existující smlouva",
-				"desc": "Zvolte, pokud chcete nájemníkovi přiřadit existující smlouvu"
-			}
+		"template": {
+			"title": "Název",
+			"description": "Popis",
+			"realEstateType": "Typ nemovitosti",
+			"marketPrice": "Tržní cena",
+			"landSize": "Rozloha pozemku",
+			"yearBuilt": "Rok výstavby",
+			"units": "Jednotky",
+			"address": "Adresa",
+			"city": "Město",
+			"postalCode": "PSČ",
+			"country": "Země"
 		}
 	},
 	"maintenanceTable": {
@@ -302,6 +350,11 @@
 			"priority": "Priorita",
 			"unit": "Jednotka",
 			"category": "Kategorie"
+		}
+	},
+	"forms": {
+		"errors": {
+			"required": "Toto pole je povinné"
 		}
 	},
 	"dataTable": {
@@ -321,6 +374,10 @@
 		"days30": "30 dní",
 		"days90": "90 dní"
 	},
+	"expenses": {
+		"addExpense": "Přidat výdaj",
+		"addExpenseDesc": "Přidejte nový výdaj do systému"
+	},
 	"common": {
 		"save": "Uložit",
 		"cancel": "Zrušit",
@@ -334,5 +391,7 @@
 		"english": "Angličtina",
 		"czech": "Čeština",
 		"loading": "Načítání..."
-	}
+	},
+	"cancel": "Zrušit",
+	"submit": "Odeslat"
 } 

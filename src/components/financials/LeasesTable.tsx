@@ -25,7 +25,7 @@ import {Button} from "../ui/button.tsx";
 import ViewLease from "../leases/ViewLease.js";
 import {isWithinInterval, subDays} from "date-fns";
 import {ButtonGroup, ButtonGroupItem} from "../ui/button-group.tsx";
-
+import { useTranslation } from 'react-i18next';
 
 
 const LeaseActions = ({lease}) => {
@@ -35,6 +35,8 @@ const LeaseActions = ({lease}) => {
 
     const [deleteLease] = useDeleteLeaseMutation();
 
+    const { t } = useTranslation();
+
     return (
         <DropdownMenu>
             <EditLease lease={lease} open={editModalOpen} setIsOpen={setEditModalOpen} />
@@ -42,8 +44,8 @@ const LeaseActions = ({lease}) => {
             <DeleteDialog
                 open={deleteModalOpen}
                 setOpen={setDeleteModalOpen}
-                title="Delete Lease"
-                content="Are you sure you want to delete this lease? This action cannot be undone."
+                title={t('leases.table.deleteLease')}
+                content={t('leases.table.deleteLeaseConfirm')}
                 onConfirm={() => deleteLease(lease?.id)}
             />
 
@@ -56,12 +58,12 @@ const LeaseActions = ({lease}) => {
                 <DropdownMenuGroup>
                     <DropdownMenuItem className="flex flex-row text-sm gap-2" onClick={() => setViewModalOpen(true)}>
                         <Eye className="w-4 h-4"/>
-                        View
+                        {t('leases.table.view')}
                     </DropdownMenuItem>
 
                     <DropdownMenuItem onClick={() => setEditModalOpen(true)}>
                         <Pencil className="w-4 h-4 mr-2"/>
-                        Edit
+                        {t('leases.table.edit')}
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
 
@@ -72,7 +74,7 @@ const LeaseActions = ({lease}) => {
                                       onClick={() => setDeleteModalOpen(true)}
                     >
                         <Trash2 className="w-4 h-4 mr-2"/>
-                        Delete Lease
+                        {t('leases.table.deleteLease')}
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>
@@ -292,6 +294,7 @@ const LeaseBulkActions = ({selectedRows}) => {
     const [updateLeases] = useUpdateLeasesMutation();
     const [deleteLeases] = useDeleteLeasesMutation();
 
+    const { t } = useTranslation();
 
     if (selectedRows.length === 0) {
         return null
@@ -318,14 +321,14 @@ const LeaseBulkActions = ({selectedRows}) => {
             <DeleteDialog
                 open={deleteModalOpen}
                 setOpen={setDeleteModalOpen}
-                title="Delete Leases"
-                content={`You are about to delete ${selectedRows?.length} lease(s). Are you sure?`}
+                title={t('leases.table.deleteLeases')}
+                content={t('leases.table.deleteLeasesConfirm', { count: selectedRows?.length })}
                 onConfirm={handleDeleteLeases}
             />
 
             <DropdownMenuTrigger asChild>
                 <Button variant="outline">
-                    <Pencil className="w-4 h-4 mr-2"/> {selectedRows?.length} Selected
+                    <Pencil className="w-4 h-4 mr-2"/> {t('leases.table.selectedCount', { count: selectedRows?.length })}
                 </Button>
             </DropdownMenuTrigger>
 
@@ -333,7 +336,7 @@ const LeaseBulkActions = ({selectedRows}) => {
                 <DropdownMenuGroup>
                     <DropdownMenuSub>
                         <DropdownMenuSubTrigger>
-                            Set Status
+                            {t('leases.table.setStatus')}
                         </DropdownMenuSubTrigger>
                         <DropdownMenuSubContent>
                             {Object.keys(LeaseStatus).map((status) => (
@@ -352,7 +355,7 @@ const LeaseBulkActions = ({selectedRows}) => {
                                       onClick={() => setDeleteModalOpen(true)}
                     >
                         <Trash2 className="w-4 h-4 mr-2"/>
-                        Delete
+                        {t('leases.table.delete')}
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>
@@ -379,15 +382,216 @@ const LeasesTable = ({ leases }) => {
 
     }, [selectedFilter, leases])
 
+    const { t } = useTranslation();
+
+    const columnsLocal: ColumnDef<Lease>[] = [
+        {
+            id: "select",
+            header: ({ table }) => (
+                <Checkbox
+                    // @ts-expect-error - our Checkbox supports indeterminate via a tri-state prop
+                    checked={table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")}
+                    onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+                    aria-label="Select all"
+                />
+            ),
+            cell: ({ row }) => (
+                <Checkbox
+                    checked={row.getIsSelected()}
+                    onCheckedChange={(value) => row.toggleSelected(!!value)}
+                    aria-label="Select row"
+                />
+            ),
+            enableSorting: false,
+            enableHiding: false,
+        },
+        {
+            id: "lease",
+            header: t('leases.table.lease'),
+            cell: ({ row }) => (
+                <div className="capitalize">#{row?.original?.id}</div>
+            ),
+            meta: {
+                type: "number",
+            },
+            accessorFn: (row) => row?.id || "",
+            enableSorting: true,
+        },
+        {
+            id: "tenant",
+            header: t('leases.table.tenant'),
+            cell: ({ row }) => {
+                if (row?.original?.tenantId) {
+                    return (
+                        <Link id={row.original.tenantId} type={"tenant"} />
+                    )
+                }
+                else {
+                    return (
+                        <div className="capitalize text-red-600/90 font-500">{t('leases.table.noTenant')}</div>
+                    )
+                }
+            },
+            accessorFn: (row) => (row?.tenant?.firstName + " " + row?.tenant?.lastName) || "",
+            meta: {
+                type: "string",
+            },
+            enableSorting: true,
+        },
+        {
+            id: "startDate",
+            header: t('leases.table.startDate'),
+            meta: {
+                type: "date",
+            },
+            cell: ({ row }) => {
+                return (
+                    <div className="capitalize">
+                        {dateParser(row?.original?.startDate)}
+                    </div>
+                )
+            },
+            accessorFn: (row) => row?.startDate || "",
+            enableSorting: true,
+        },
+        {
+            id: "endDate",
+            header: t('leases.table.endDate'),
+            meta: {
+                type: "date",
+            },
+            cell: ({ row }) => {
+                return (
+                    <div className="capitalize">
+                        {dateParser(row?.original?.endDate)}
+                    </div>
+                )
+            },
+            accessorFn: (row) => row?.endDate || "",
+            enableSorting: true,
+        },
+        {
+            id: "rentalPrice",
+            header: t('leases.table.rentalPrice'),
+            meta: {
+                type: "string",
+            },
+            cell: ({ row }) => {
+                return (
+                    <div className="capitalize">
+                        {moneyParser(row?.original?.rentalPrice)}
+                    </div>
+                )
+            },
+            accessorFn: (row) => row?.rentalPrice || "",
+            enableSorting: true,
+        },
+        {
+            id: "unit",
+            header: t('leases.table.unit'),
+            cell: ({ row }) => {
+                if (row?.original?.unitId) {
+                    return (
+                        <Link id={row.original.unitId} type={"unit"}  />
+                    )
+                }
+                else {
+                    return (
+                        <div className="capitalize text-red-500">{t('leases.table.noUnit')}</div>
+                    )
+                }
+            },
+            accessorFn: (row) => row?.unit?.unitIdentifier || "",
+            meta: {
+                type: "string",
+            },
+            enableSorting: true,
+        },
+        {
+            id: "status",
+            header: t('leases.table.status'),
+            meta: {
+                type: "enum",
+                options: Object.values(LeaseStatus)
+            },
+            cell: ({ row }) => {
+                return (
+                    <LeaseStatusBadge status={row?.original?.status} />
+                )
+            },
+            accessorFn: (row) => row?.status || undefined,
+            enableSorting: true,
+        },
+        {
+            id: "paymentFrequency",
+            header: t('leases.table.paymentFrequency'),
+            meta: {
+                type: "string",
+            },
+            cell: ({ row }) => {
+                return (
+                    <div className="capitalize">
+                        {row?.original?.paymentFrequency?.toLowerCase()}
+                    </div>
+                )
+            },
+            accessorFn: (row) => row?.paymentFrequency || "",
+            enableSorting: true,
+        },
+        {
+            id: "notes",
+            header: t('leases.table.notes'),
+            meta: {
+                type: "string",
+            },
+            cell: ({ row }) => {
+                return (
+                    <div className="capitalize">
+                        {row?.original?.notes}
+                    </div>
+                )
+            },
+            accessorFn: (row) => row?.notes || "",
+            enableSorting: true,
+        },
+        {
+            id: "specialTerms",
+            header: t('leases.table.specialTerms'),
+            meta: {
+                type: "string",
+            },
+            cell: ({ row }) => {
+                return (
+                    <div className="capitalize">
+                        {row?.original?.specialTerms}
+                    </div>
+                )
+            },
+            accessorFn: (row) => row?.specialTerms || "",
+            enableSorting: true,
+        },
+        {
+            id: "actions",
+            header: t('leases.table.actions'),
+            enableHiding: false,
+            cell: ({ row }) => {
+                const lease = row.original
+                return (
+                    <LeaseActions lease={lease}/>
+                )
+            },
+        },
+    ]
+
 
     return (
         <div className={"border-2 border-border p-4 rounded-lg "}>
 
             <DataTable
                 data={filteredLeases}
-                columns={columns}
-                title="Leases"
-                subtitle="These are all your leases."
+                columns={columnsLocal}
+                title={t('financials.tabs.leases')}
+                subtitle={t('financials.leasesSubtitle')}
                 icon={<Scroll className={"w-5 h-5"} />}
                 defaultSort={{id: "lease", desc: true}}
                 onRowSelectionChange={(selectedRows: Lease[]) => setSelectedRows(selectedRows)}
@@ -398,13 +602,13 @@ const LeasesTable = ({ leases }) => {
                     onValueChange={(value) => setSelectedFilter(value)}
                 >
                     <ButtonGroupItem value={"all"} >
-                        View All
+                        {t('financials.filters.viewAll')}
                     </ButtonGroupItem>
                     <ButtonGroupItem value={"active"}>
-                        Active
+                        {t('financials.filters.active')}
                     </ButtonGroupItem>
                     <ButtonGroupItem value={"inactive"}>
-                        Inactive
+                        {t('financials.filters.inactive')}
                     </ButtonGroupItem>
                 </ButtonGroup>
 
