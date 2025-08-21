@@ -48,7 +48,11 @@ const LoginCard = () => {
         <div className="flex justify-center items-center min-h-screen rounded-xl shadow-inner">
             <Card className="shadow-2xl  flex w-fit flex-col p-5">
                 <CardHeader className="flex justify-center items-center py-10">
-                    <AiFillRocket className="w-12 h-12"/>
+                <img 
+                        src="/icon.png" 
+                        alt="App Logo"
+                        className="w-6 h-6 flex justify-center"
+                    />
                     <h1 className="text-3xl">{t('auth.welcomeBack')}</h1>
                     
                 </CardHeader>
